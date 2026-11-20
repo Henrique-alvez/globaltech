@@ -1,0 +1,106 @@
+/* ========================================================
+   GLOBAL TECH - MOBILE-FIRST CUSTOM STYLES & GLOW ANIMATIONS
+   Paleta: Preto Absoluto (#08080A), Laranja Neon (#FF5E00), Carvão (#111116 / #16161D)
+   ======================================================== */
+
+:root {
+    --color-orange: #FF5E00;
+    --color-orange-glow: rgba(255, 94, 0, 0.45);
+    --color-orange-subtle: rgba(255, 94, 0, 0.12);
+}
+
+/* Touch & Mobile Optimizations */
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #08080A;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #24242F;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF5E00;
+}
+
+/* Floating Keyframe Animations (Suaves e performáticas em GPUs mobile) */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+}
+
+@keyframes float-delayed {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-6px) rotate(-0.5deg);
+    }
+}
+
+@keyframes spin-extremely-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-float {
+    animation: float 4.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+.animate-float-delayed {
+    animation: float-delayed 5s ease-in-out infinite 1s;
+    will-change: transform;
+}
+
+.animate-spin-extremely-slow {
+    animation: spin-extremely-slow 50s linear infinite;
+    will-change: transform;
+}
+
+/* Category Channel Cards Hover & Active Touch Animation */
+.category-channel-card {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+    .category-channel-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px -10px rgba(255, 94, 0, 0.25);
+    }
+}
+
+.category-channel-card:active {
+    transform: scale(0.99);
+}
+
+/* Smooth Form Focus Rings */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 2px rgba(255, 94, 0, 0.4);
+}
+
+/* Evitar zoom automático do iOS Safari em inputs/selects */
+@media screen and (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
